@@ -1,9 +1,9 @@
 /***************************************************************************//**
  * @file
- * @brief LED Driver Instances
+ * @brief PWM Driver Instances
  *******************************************************************************
  * # License
- * <b>Copyright 2019 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2020 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * The licensor of this software is Silicon Laboratories Inc. Your use of this
@@ -15,18 +15,22 @@
  *
  ******************************************************************************/
 
-#ifndef SL_SIMPLE_LED_INSTANCES_H
-#define SL_SIMPLE_LED_INSTANCES_H
+#ifndef SL_PWM_INSTANCES_H
+#define SL_PWM_INSTANCES_H
 
-#include "sl_simple_led.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-extern const sl_led_t sl_led_led0;
+#include "sl_pwm.h"
 
-extern const sl_led_t *sl_simple_led_array[];
 
-#define SL_SIMPLE_LED_COUNT 1
-#define SL_SIMPLE_LED_INSTANCE(n) (sl_simple_led_array[n])
+extern sl_pwm_instance_t sl_pwm_led0;
 
-void sl_simple_led_init_instances(void);
+void sl_pwm_init_instances(void);
 
-#endif // SL_SIMPLE_LED_INIT_H
+#ifdef __cplusplus
+}
+#endif
+
+#endif // SL_PWM_INSTANCES_H

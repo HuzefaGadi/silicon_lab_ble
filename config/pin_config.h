@@ -59,6 +59,10 @@
 // [GPIO]$
 
 // $[TIMER0]
+// TIMER0 CC0 on PA04
+#define TIMER0_CC0_PORT                          gpioPortA
+#define TIMER0_CC0_PIN                           4
+
 // [TIMER0]$
 
 // $[TIMER1]

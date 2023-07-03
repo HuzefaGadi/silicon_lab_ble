@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <model:MDescriptors xmlns:model="http://www.silabs.com/ss/Studio.ecore">
   <descriptors name="bt_soc_blinky_2">
-    <properties key="projectCommon.sdkId" value="com.silabs.sdk.stack.super:4.2.3._1536197422"/>
+    <properties key="projectCommon.sdkId" value="com.silabs.sdk.stack.super:4.2.3._-2074772701"/>
     <properties key="universalConfig.generationDirectory" value=""/>
     <properties key="universalConfig.toolchainCompatibility" value="iar gcc"/>
     <properties key="projectCommon.boardIds" value="brd4184b:0.0.0.A02"/>

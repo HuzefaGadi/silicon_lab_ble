@@ -6,9 +6,9 @@
   <service advertise="false" name="Generic Access" requirement="mandatory" sourceId="org.bluetooth.service.generic_access" type="primary" uuid="1800">
     <informativeText>Abstract: The generic_access service contains generic information about the device. All available Characteristics are readonly. </informativeText>
 
-    <!--Huzefa Gadi-->
-    <characteristic const="false" id="device_name" name="Huzefa Gadi" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
-      <value length="14" type="utf-8" variable_length="false">Huzefa</value>
+    <!--MCLS_IMDT-->
+    <characteristic const="false" id="device_name" name="MCLS_IMDT" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
+      <value length="24" type="utf-8" variable_length="false">MCLS_IMDT</value>
       <properties>
         <read authenticated="false" bonded="false" encrypted="false"/>
         <write authenticated="false" bonded="false" encrypted="false"/>
@@ -75,11 +75,11 @@
     </characteristic>
   </service>
 
-  <!--Commander-->
-  <service advertise="true" name="Commander" requirement="mandatory" sourceId="" type="primary" uuid="de8a5aac-a99b-c315-0c80-60d4cbb51224">
+  <!--MCLS-->
+  <service advertise="true" name="MCLS" requirement="mandatory" sourceId="" type="primary" uuid="de8a5aac-a99b-c315-0c80-60d4cbb5122b">
 
-    <!--Data Reporter-->
-    <characteristic const="false" id="data_reciever" name="Data Reporter" sourceId="" uuid="5b026510-4088-c297-46d8-be6c736a087b">
+    <!--MCLS Sender-->
+    <characteristic const="false" id="data_reciever" name="MCLS Sender" sourceId="" uuid="5b026510-4088-c297-46d8-be6c736a087d">
       <value length="100" type="utf-8" variable_length="true">00</value>
       <properties>
         <read authenticated="false" bonded="false" encrypted="false"/>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="uc.module.setup.componentSetup.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:10.3.1.20210824.gcc" propertyScope="project">
   <folder name="image">
-    <file name="readme_img0.png" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/image/readme_img0.png"/>
-    <file name="readme_img1.jpg" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/image/readme_img1.jpg"/>
-    <file name="readme_img2.jpg" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/image/readme_img2.jpg"/>
-    <file name="readme_img3.jpg" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/image/readme_img3.jpg"/>
-    <file name="readme_img4.jpg" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/image/readme_img4.jpg"/>
-    <file name="readme_img5.gif" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/image/readme_img5.gif"/>
+    <file name="readme_img0.png" linked="false" uri="studio:/project/image/readme_img0.png"/>
+    <file name="readme_img1.jpg" linked="false" uri="studio:/project/image/readme_img1.jpg"/>
+    <file name="readme_img2.jpg" linked="false" uri="studio:/project/image/readme_img2.jpg"/>
+    <file name="readme_img3.jpg" linked="false" uri="studio:/project/image/readme_img3.jpg"/>
+    <file name="readme_img4.jpg" linked="false" uri="studio:/project/image/readme_img4.jpg"/>
+    <file name="readme_img5.gif" linked="false" uri="studio:/project/image/readme_img5.gif"/>
   </folder>
   <folder name="gecko_sdk_4.2.3">
     <folder name="platform">
@@ -115,14 +115,12 @@
             <file name="sl_simple_button.h" uri="studio:/sdk/platform/driver/button/inc/sl_simple_button.h"/>
           </folder>
         </folder>
-        <folder name="leddrv">
+        <folder name="pwm">
           <folder name="src">
-            <file name="sl_led.c" uri="studio:/sdk/platform/driver/leddrv/src/sl_led.c"/>
-            <file name="sl_simple_led.c" uri="studio:/sdk/platform/driver/leddrv/src/sl_simple_led.c"/>
+            <file name="sl_pwm.c" uri="studio:/sdk/platform/driver/pwm/src/sl_pwm.c"/>
           </folder>
           <folder name="inc">
-            <file name="sl_led.h" uri="studio:/sdk/platform/driver/leddrv/inc/sl_led.h"/>
-            <file name="sl_simple_led.h" uri="studio:/sdk/platform/driver/leddrv/inc/sl_simple_led.h"/>
+            <file name="sl_pwm.h" uri="studio:/sdk/platform/driver/pwm/inc/sl_pwm.h"/>
           </folder>
         </folder>
       </folder>
@@ -783,10 +781,10 @@
       </folder>
     </folder>
   </folder>
-  <file name="main.c" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/main.c"/>
-  <file name="app.c" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/app.c"/>
-  <file name="app.h" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/app.h"/>
-  <file name="readme.md" linked="false" uri="studio:/sdk/app/bluetooth/example/bt_soc_blinky/readme.md"/>
+  <file name="main.c" linked="false" uri="studio:/project/main.c"/>
+  <file name="app.c" linked="false" uri="studio:/project/app.c"/>
+  <file name="app.h" linked="false" uri="studio:/project/app.h"/>
+  <file name="readme.md" linked="false" uri="studio:/project/readme.md"/>
   <file name="create_bl_files.bat" generated="true" linked="false"/>
   <file name="create_bl_files.sh" generated="true" linked="false"/>
   <file name="sl_gatt_service_device_information.c" generated="true" linked="false"/>
@@ -812,7 +810,6 @@
   <includePath uri="studio:/sdk/platform/service/hfxo_manager/inc"/>
   <includePath uri="studio:/sdk/app/bluetooth/common/in_place_ota_dfu"/>
   <includePath uri="studio:/sdk/platform/service/iostream/inc"/>
-  <includePath uri="studio:/sdk/platform/driver/leddrv/inc"/>
   <includePath uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/config"/>
   <includePath uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc"/>
   <includePath uri="studio:/sdk/util/third_party/mbedtls/include"/>
@@ -823,6 +820,7 @@
   <includePath uri="studio:/sdk/platform/service/power_manager/inc"/>
   <includePath uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc"/>
   <includePath uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/public"/>
+  <includePath uri="studio:/sdk/platform/driver/pwm/inc"/>
   <includePath uri="studio:/sdk/platform/radio/rail_lib/common"/>
   <includePath uri="studio:/sdk/platform/radio/rail_lib/protocol/ble"/>
   <includePath uri="studio:/sdk/platform/radio/rail_lib/protocol/ieee802154"/>

@@ -34,7 +34,12 @@
 #include "gatt_db.h"
 #include "app.h"
 #include "sl_simple_button_instances.h"
-#include "sl_simple_led_instances.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "sl_pwm.h"
+#include "sl_pwm_instances.h"
+#include "sl_pwm_init_led0_config.h"
 
 // The advertising set handle allocated from Bluetooth stack.
 static uint8_t advertising_set_handle = 0xff;
@@ -45,6 +50,85 @@ static bool report_button_flag = false;
 static sl_status_t update_report_button_characteristic(void);
 // Sends notification of the Report Button characteristic.
 static sl_status_t send_report_button_notification(void);
+#define MAX_BUFFER_SIZE 256
+
+// Buffer to store the read value
+static uint8_t readBuffer[MAX_BUFFER_SIZE];
+static uint16_t readBufferSize = 0;
+
+uint8_t pwm = 0;
+uint8_t ledout_reg = 0xAA;
+sl_pwm_instance_t sl_pwm_led1 = {
+    .timer = SL_PWM_LED1_PERIPHERAL,
+    .channel = (uint8_t)(SL_PWM_LED1_OUTPUT_CHANNEL),
+    .port = (uint8_t)(SL_PWM_LED1_OUTPUT_PORT),
+    .pin = (uint8_t)(SL_PWM_LED1_OUTPUT_PIN),
+  #if defined(SL_PWM_LED1_OUTPUT_LOC)
+    .location = (uint8_t)(SL_PWM_LED1_OUTPUT_LOC),
+  #endif
+  };
+
+
+sl_pwm_instance_t sl_pwm_led2 = {
+      .timer = SL_PWM_LED2_PERIPHERAL,
+      .channel = (uint8_t)(SL_PWM_LED2_OUTPUT_CHANNEL),
+      .port = (uint8_t)(SL_PWM_LED2_OUTPUT_PORT),
+      .pin = (uint8_t)(SL_PWM_LED2_OUTPUT_PIN),
+    #if defined(SL_PWM_LED2_OUTPUT_LOC)
+      .location = (uint8_t)(SL_PWM_LED2_OUTPUT_LOC),
+    #endif
+    };
+
+
+sl_pwm_instance_t sl_pwm_led3 = {
+             .timer = SL_PWM_LED3_PERIPHERAL,
+             .channel = (uint8_t)(SL_PWM_LED3_OUTPUT_CHANNEL),
+             .port = (uint8_t)(SL_PWM_LED3_OUTPUT_PORT),
+             .pin = (uint8_t)(SL_PWM_LED3_OUTPUT_PIN),
+           #if defined(SL_PWM_LED3_OUTPUT_LOC)
+             .location = (uint8_t)(SL_PWM_LED3_OUTPUT_LOC),
+           #endif
+           };
+
+
+void initPWM() {
+
+
+
+
+
+  sl_pwm_config_t pwm_led1_config = {
+       .frequency = SL_PWM_LED1_FREQUENCY,
+       .polarity = SL_PWM_LED1_POLARITY,
+     };
+
+     sl_pwm_init(&sl_pwm_led1, &pwm_led1_config);
+
+
+
+
+
+
+       sl_pwm_config_t pwm_led2_config = {
+            .frequency = SL_PWM_LED2_FREQUENCY,
+            .polarity = SL_PWM_LED2_POLARITY,
+          };
+
+          sl_pwm_init(&sl_pwm_led2, &pwm_led2_config);
+
+
+
+
+
+
+            sl_pwm_config_t pwm_led3_config = {
+                 .frequency = SL_PWM_LED3_FREQUENCY,
+                 .polarity = SL_PWM_LED3_POLARITY,
+               };
+
+               sl_pwm_init(&sl_pwm_led3, &pwm_led3_config);
+
+}
 
 /**************************************************************************//**
  * Application Init.
@@ -53,6 +137,12 @@ SL_WEAK void app_init(void)
 {
   // Make sure there will be no button events before the boot event.
   sl_button_disable(SL_SIMPLE_BUTTON_INSTANCE(0));
+  initPWM();
+  sl_pwm_start(&sl_pwm_led0);
+  sl_pwm_start(&sl_pwm_led1);
+  sl_pwm_start(&sl_pwm_led2);
+  sl_pwm_start(&sl_pwm_led3);
+
 
   /////////////////////////////////////////////////////////////////////////////
   // Put your additional application init code here!                         //
@@ -96,6 +186,7 @@ char* process_received_text(char* text, uint16_t length)
     receivedString[length] = '\0';
     return receivedString;
 }
+
 
 /**************************************************************************//**
  * Bluetooth stack event handler.
@@ -177,61 +268,32 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
     case sl_bt_evt_gatt_server_attribute_value_id:
       // The value of the gattdb_led_control characteristic was changed.
       if (gattdb_data_reciever == evt->data.evt_gatt_server_attribute_value.attribute) {
-        uint8_t data_recv;
-        size_t data_recv_len;
+        char receivedText [evt->data.evt_gatt_server_attribute_value.value.len+1];
+        memcpy(readBuffer, evt->data.evt_gatt_server_attribute_value.value.data,
+               evt->data.evt_gatt_server_attribute_value.value.len);
 
-//        // Read characteristic value.
-//        sc = sl_bt_gatt_server_read_attribute_value(gattdb_data_reciever,
-//                                                    0,
-//                                                    sizeof(data_recv),
-//                                                    &data_recv_len,
-//                                                    &data_recv);
-//        (void)data_recv_len;
-//        app_log_status_error(sc);
-//
-//        if (sc != SL_STATUS_OK) {
-//          break;
-//        }
+        memcpy(receivedText, readBuffer, evt->data.evt_gatt_server_attribute_value.value.len);
 
-        char* rcvTxt = (char*)evt->data.evt_gatt_server_attribute_value.value.data;
-        uint16_t textLength = evt->data.evt_gatt_server_attribute_value.value.len;
-        char receivedText [textLength];
-
-        strncpy(receivedText,rcvTxt+0,textLength);
-
+       receivedText[evt->data.evt_gatt_server_attribute_value.value.len] = '\0';
 
         if (0 == strcmp(receivedText,"SWON")) {
             switchSW(true);
         } else if (0 == strcmp(receivedText,"SWOFF")) {
             switchSW(false);
-        } else {
-            char found = strstr(receivedText,"SWM");
-            char equalsSign = strstr(receivedText,"=");
-            if(found && equalsSign) {
-                char command[14];
-                strncpy(command,receivedText+4,strlen(receivedText)-4);
-                printf("%s\n",command);
-            }
+        } else if (strstr(receivedText, "PWM") != NULL && strchr(receivedText, '=') == receivedText + 3) {
+                    const char* sub_str = receivedText + 4;
+                    int ret_int = set_pwm(sub_str);
+                    if (ret_int == 1)
+                        printf("OK\n");
+                    else
+                        printf("FAIL\n");
+                }
         }
 
-//        // Toggle LED.
-//        if (data_recv == 0x00) {
-//          sl_led_turn_off(SL_SIMPLE_LED_INSTANCE(0));
-//          app_log_info("LED off.\n");
-//        } else if (data_recv == 0x01) {
-//          sl_led_turn_on(SL_SIMPLE_LED_INSTANCE(0));
-//          app_log_info("LED on.\n");
-//        } else {
-//          app_log_error("Invalid attribute value: 0x%02x\n", (int)data_recv);
-//        }
-      }
       app_log_info("Command came\n");
       app_log_info(evt->data.evt_gatt_server_attribute_value.attribute);
       break;
 
-    // -------------------------------
-    // This event occurs when the remote device enabled or disabled the
-    // notification.
     case sl_bt_evt_gatt_server_characteristic_status_id:
       if (gattdb_report_button == evt->data.evt_gatt_server_characteristic_status.characteristic) {
         // A local Client Characteristic Configuration descriptor was changed in
@@ -261,6 +323,66 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
   }
 }
 
+
+char* getValue(const char* data, char separator, int index) {
+    char* copy = strdup(data);
+    char* token = strtok(copy, &separator);
+    int found = 0;
+
+    while (token != NULL) {
+        if (found == index) {
+            return token;
+        }
+        token = strtok(NULL, &separator);
+        found++;
+    }
+
+    free(copy);
+    return "";
+}
+
+
+int set_pwm(char* sub_str) {
+  int ret = -1;
+  for (int i = 0; i < 2; i++) {
+    if (getValue(sub_str, ',', i) == NULL) {
+      ret = 0;
+      break;
+    }
+  }
+  if (ret != 0) {
+    char* channel = getValue(sub_str, ',', 0);
+    char* dc_str = getValue(sub_str, ',', 1);
+    float dc = atof(dc_str);
+    uint8_t ch = atoi(channel);
+    uint8_t mask = (3 << ch * 2) ^ 255;  // mask for LED output register 0x8
+#ifdef DEBUG
+    printf("%d\n", mask);
+#endif
+    if (dc > 100) {
+      ledout_reg = (ledout_reg & mask) | (1 << ch * 2);
+    } else {
+      pwm = dc;
+      ledout_reg = (ledout_reg & mask) | (2 << ch * 2);
+    }
+
+    printf("PWM programming value:\n");
+    printf("%f\n", pwm);
+
+    if(ch == 0) {
+        sl_pwm_set_duty_cycle(&sl_pwm_led0,pwm);
+    } else if(ch == 1) {
+        sl_pwm_set_duty_cycle(&sl_pwm_led1,pwm);
+    } else if(ch == 2) {
+        sl_pwm_set_duty_cycle(&sl_pwm_led2,pwm);
+    } else if(ch == 3) {
+        sl_pwm_set_duty_cycle(&sl_pwm_led3,pwm);
+    }
+
+    ret = 1;
+  }
+  return ret;
+}
 
 
 //
@@ -294,11 +416,12 @@ int setPWM(char command[]) {
 
 
 void switchSW(const bool switchON) {
-
   if(switchON) {
-      sl_led_turn_on(SL_SIMPLE_LED_INSTANCE(0));
+      sl_pwm_set_duty_cycle(&sl_pwm_led0, 0x64);
+//      sl_led_turn_on(SL_SIMPLE_LED_INSTANCE(0));
   } else {
-      sl_led_turn_off(SL_SIMPLE_LED_INSTANCE(0));
+      sl_pwm_set_duty_cycle(&sl_pwm_led0, 0);
+//      sl_led_turn_off(SL_SIMPLE_LED_INSTANCE(0));
   }
 }
 

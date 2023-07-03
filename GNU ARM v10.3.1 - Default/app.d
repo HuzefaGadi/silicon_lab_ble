@@ -92,9 +92,10 @@ app.o: ../app.c \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_simple_button.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_button.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_gpio.h \
- /Users/huzefagadi/SimplicityStudio/v5_workspace/bt_soc_blinky_2/autogen/sl_simple_led_instances.h \
- /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_simple_led.h \
- /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_led.h
+ /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/pwm/inc/sl_pwm.h \
+ /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_timer.h \
+ /Users/huzefagadi/SimplicityStudio/v5_workspace/bt_soc_blinky_2/autogen/sl_pwm_instances.h \
+ /Users/huzefagadi/SimplicityStudio/v5_workspace/bt_soc_blinky_2/config/sl_pwm_init_led0_config.h
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/common/toolchain/inc/sl_gcc_preinclude.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_common.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/Device/SiliconLabs/EFR32BG22/Include/em_device.h:
@@ -188,6 +189,7 @@ app.o: ../app.c \
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_simple_button.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_button.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_gpio.h:
-/Users/huzefagadi/SimplicityStudio/v5_workspace/bt_soc_blinky_2/autogen/sl_simple_led_instances.h:
-/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_simple_led.h:
-/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_led.h:
+/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/pwm/inc/sl_pwm.h:
+/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_timer.h:
+/Users/huzefagadi/SimplicityStudio/v5_workspace/bt_soc_blinky_2/autogen/sl_pwm_instances.h:
+/Users/huzefagadi/SimplicityStudio/v5_workspace/bt_soc_blinky_2/config/sl_pwm_init_led0_config.h:

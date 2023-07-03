@@ -25,6 +25,7 @@ sl_mbedtls_config.h=-1710232477
 sl_memory_config.h=1136720201
 sl_mx25_flash_shutdown_usart_config.h=-283962480
 sl_power_manager_config.h=-244691433
+sl_pwm_init_led0_config.h=-816331
 sl_rail_util_pa_config.h=-1877496684
 sl_rail_util_pti_config.h=-833951180
 sl_simple_button_btn0_config.h=1746622513

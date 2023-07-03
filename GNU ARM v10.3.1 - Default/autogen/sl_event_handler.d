@@ -120,13 +120,13 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emdrv/nvm3/inc/nvm3.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emdrv/nvm3/inc/nvm3_hal.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emdrv/nvm3/inc/nvm3_default.h \
+ ../autogen/sl_pwm_instances.h \
+ /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/pwm/inc/sl_pwm.h \
+ /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_timer.h \
  ../autogen/sl_simple_button_instances.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_simple_button.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_button.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_gpio.h \
- ../autogen/sl_simple_led_instances.h \
- /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_simple_led.h \
- /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_led.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//util/third_party/mbedtls/include/psa/crypto.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//util/third_party/mbedtls/include/psa/crypto_platform.h \
  /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//util/third_party/mbedtls/include/mbedtls/private_access.h \
@@ -297,13 +297,13 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emdrv/nvm3/inc/nvm3.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emdrv/nvm3/inc/nvm3_hal.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emdrv/nvm3/inc/nvm3_default.h:
+../autogen/sl_pwm_instances.h:
+/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/pwm/inc/sl_pwm.h:
+/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_timer.h:
 ../autogen/sl_simple_button_instances.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_simple_button.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/button/inc/sl_button.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/emlib/inc/em_gpio.h:
-../autogen/sl_simple_led_instances.h:
-/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_simple_led.h:
-/Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//platform/driver/leddrv/inc/sl_led.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//util/third_party/mbedtls/include/psa/crypto.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//util/third_party/mbedtls/include/psa/crypto_platform.h:
 /Users/huzefagadi/SimplicityStudio/SDKs/gecko_sdk_2//util/third_party/mbedtls/include/mbedtls/private_access.h:
